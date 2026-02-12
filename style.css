@@ -1,0 +1,440 @@
+/* ===============================
+   THEME TOKENS (Dark / Light)
+   =============================== */
+
+:root {
+    --bg: #0b1220;
+    --panel: rgba(255, 255, 255, 0.06);
+    --panel-strong: rgba(255, 255, 255, 0.10);
+    --text: rgba(255, 255, 255, 0.92);
+    --muted: rgba(255, 255, 255, 0.70);
+    --border: rgba(255, 255, 255, 0.12);
+    --primary: #6ee7ff;
+    --secondary: #a78bfa;
+    --success: #34d399;
+    --warning: #fbbf24;
+    --danger: #fb7185;
+    --radius: 16px;
+    --radius-sm: 12px;
+    --shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+    --sidebar-w: 280px;
+    --kpi1: linear-gradient(135deg, rgba(110, 231, 255, .22), rgba(167, 139, 250, .18));
+    --kpi2: linear-gradient(135deg, rgba(52, 211, 153, .20), rgba(110, 231, 255, .12));
+    --kpi3: linear-gradient(135deg, rgba(251, 191, 36, .20), rgba(167, 139, 250, .12));
+    --kpi4: linear-gradient(135deg, rgba(251, 113, 133, .20), rgba(110, 231, 255, .12));
+}
+
+[data-theme="light"] {
+    --bg: #f6f7fb;
+    --panel: rgba(15, 23, 42, 0.05);
+    --panel-strong: rgba(15, 23, 42, 0.08);
+    --text: rgba(15, 23, 42, 0.92);
+    --muted: rgba(15, 23, 42, 0.65);
+    --border: rgba(15, 23, 42, 0.12);
+    --shadow: 0 12px 24px rgba(15, 23, 42, 0.15);
+}
+
+
+/* ===============================
+   BASE
+   =============================== */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+    background: radial-gradient(1000px 500px at 10% -10%, rgba(110, 231, 255, .18), transparent 60%), radial-gradient(900px 500px at 90% 0%, rgba(167, 139, 250, .18), transparent 60%), var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+}
+
+
+/* ===============================
+   LAYOUT
+   =============================== */
+
+.app {
+    display: grid;
+    grid-template-columns: var(--sidebar-w) 1fr;
+    min-height: 100vh;
+}
+
+.main {
+    min-width: 0;
+    padding: 18px;
+}
+
+
+/* ===============================
+   SIDEBAR
+   =============================== */
+
+.sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    padding: 18px 14px;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid var(--border);
+    background: linear-gradient(180deg, var(--panel), transparent 40%);
+    backdrop-filter: blur(10px);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 10px 16px;
+    margin-bottom: 10px;
+}
+
+.logo {
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+    background: conic-gradient(from 210deg, var(--primary), var(--secondary), var(--primary));
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+}
+
+.brand h1 {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.2;
+}
+
+.brand small {
+    display: block;
+    margin-top: 2px;
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 6px;
+}
+
+.nav button {
+    all: unset;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    color: var(--muted);
+    transition: background .2s ease, color .2s ease, transform .1s ease;
+}
+
+.nav button:hover {
+    background: var(--panel);
+    color: var(--text);
+}
+
+.nav button.active {
+    background: linear-gradient( 135deg, rgba(110, 231, 255, .22), rgba(167, 139, 250, .18));
+    color: var(--text);
+    border: 1px solid rgba(110, 231, 255, .35);
+}
+
+.ico {
+    width: 28px;
+    height: 28px;
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    background: var(--panel);
+    border: 1px solid var(--border);
+}
+
+
+/* Sidebar footer */
+
+.sidebar-footer {
+    margin-top: auto;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--muted);
+}
+
+.mini-avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(110, 231, 255, .30), rgba(167, 139, 250, .25));
+    border: 1px solid var(--border);
+}
+
+.sidebar-footer b {
+    color: var(--text);
+    font-size: 13px;
+}
+
+
+/* ===============================
+   TOPBAR
+   =============================== */
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--panel);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow);
+}
+
+.search {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border-radius: var(--radius-sm);
+    background: var(--panel-strong);
+}
+
+.search input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: var(--text);
+}
+
+
+/* Buttons */
+
+.icon-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 12px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    background: var(--panel);
+    cursor: pointer;
+    color: var(--text);
+}
+
+.icon-btn:hover {
+    background: var(--panel-strong);
+}
+
+
+/* ===============================
+   CARDS / KPI
+   =============================== */
+
+.kpis {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-top: 16px;
+}
+
+.card {
+    background: var(--panel);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+}
+
+.kpi {
+    position: relative;
+    padding: 16px;
+    overflow: hidden;
+}
+
+.kpi::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--kpi1);
+}
+
+.kpi.k2::before {
+    background: var(--kpi2);
+}
+
+.kpi.k3::before {
+    background: var(--kpi3);
+}
+
+.kpi.k4::before {
+    background: var(--kpi4);
+}
+
+.kpi>* {
+    position: relative;
+}
+
+.kpi-title {
+    font-size: 13px;
+    color: var(--muted);
+    font-weight: 800;
+}
+
+.kpi-value {
+    font-size: 22px;
+    font-weight: 900;
+}
+
+.kpi-sub {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.trend.up {
+    color: var(--success);
+}
+
+.trend.down {
+    color: var(--danger);
+}
+
+
+/* ===============================
+   TABLE
+   =============================== */
+
+.table-wrap {
+    overflow-x: auto;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 640px;
+}
+
+thead th {
+    padding: 12px;
+    font-size: 12px;
+    text-align: left;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+}
+
+tbody td {
+    padding: 12px;
+    border-bottom: 1px solid var(--border);
+}
+
+tbody tr:hover {
+    background: var(--panel-strong);
+}
+
+.sortable {
+    cursor: pointer;
+}
+
+.sort-ind {
+    font-size: 11px;
+    margin-left: 6px;
+}
+
+
+/* Status */
+
+.tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: var(--panel-strong);
+    font-size: 12px;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--success);
+}
+
+.dot.pending {
+    background: var(--warning);
+}
+
+.dot.failed {
+    background: var(--danger);
+}
+
+
+/* ===============================
+   ACTIVITY
+   =============================== */
+
+.activity {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.act-item {
+    display: flex;
+    gap: 10px;
+    padding: 12px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+}
+
+.act-ico {
+    width: 34px;
+    height: 34px;
+    border-radius: 12px;
+    background: var(--panel);
+    display: grid;
+    place-items: center;
+}
+
+
+/* ===============================
+   UTILITIES
+   =============================== */
+
+.hidden {
+    display: none !important;
+}
+
+
+/* ===============================
+   RESPONSIVE
+   =============================== */
+
+@media (max-width: 1100px) {
+    .kpis {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .kpis {
+        grid-template-columns: 1fr;
+    }
+    .search {
+        display: none;
+    }
+}
